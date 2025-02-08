@@ -10,6 +10,13 @@ const MATCHED_COLOR = 'error'
 
 const UNMATCHED_COLOR = 'disabled'
 
+/**
+ * React Component which displays the details of a dog and allows
+ * it to be favorited or unfavorited.
+ * 
+ * @param dog The dog to display the information for 
+ * @returns A React Component which displays a dog's details
+ */
 function Dog({ dog }: DogProps) {
   const { favorites: matches, toggleFavorite: toggleMatch } = useFavorites()
 

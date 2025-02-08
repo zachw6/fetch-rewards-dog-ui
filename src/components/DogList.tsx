@@ -7,6 +7,13 @@ interface DogListProps {
   emptyMessage: string
 }
 
+/**
+ * A React Component representing a list of dogs
+ * 
+ * @param props An object containing the list of ids of dogs to display and a message to
+ * display in the case that the list is empty.
+ * @returns A grid of dog items based on the IDs that are inputted.
+ */
 function DogList(props: DogListProps) {
   const queryDogs = useDogs(props.ids)
   const dogs = queryDogs.data?.map(dog => <Dog key={dog.id} dog={dog} />) ?? []

@@ -6,6 +6,12 @@ import { QUERY_KEY } from '../const'
 import { axiosFetchClient } from '../App'
 import { useDogs } from '../hooks/useDogs'
 
+/**
+ * Fetches the dog the user has matched with based on a list of their favorite dogs IDs.
+ * 
+ * @param favoriteIds A list of the dogs that the user has favorited
+ * @returns A single ID for a dog that the user has matched with
+ */
 async function fetchMatch(favoriteIds: string[]) {
   const response = await axiosFetchClient.post<{
     match: string
@@ -16,6 +22,12 @@ async function fetchMatch(favoriteIds: string[]) {
   return response.data
 }
 
+/**
+ * A React component that shows a dialog with the dog the user has matched with.
+ * 
+ * @param props an object containing a function for closing the dialog.
+ * @returns A Modal which shows the user the dog they have matched with.
+ */
 function MatchDialog(props: { closeDialog: () => void }) {
   const { favorites } = useFavorites()
   const queryMatch = useQuery({

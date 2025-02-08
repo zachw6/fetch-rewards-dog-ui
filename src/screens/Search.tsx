@@ -11,9 +11,10 @@ import MatchButton from '../components/MatchButton'
 
 
 /**
+ * Axios call for searching for dogs
  * 
- * @param searchParameters 
- * @returns 
+ * @param searchParameters The search parameters that are accepted by the /dogs/search endpoint.
+ * @returns The IDs of dogs returned from the endpoint
  */
 async function searchDogs(searchParameters: DogSearchParameters) {
   const response = await axiosFetchClient.get<{
@@ -32,12 +33,16 @@ async function searchDogs(searchParameters: DogSearchParameters) {
     }
   })
   if (!response.data) {
-    // TODO: Better error messaging
     throw new Error("An error occurred when searching for dogs.")
   }
   return response.data
 }
 
+/**
+ * Dog Search Screen
+ * 
+ * @returns The Search screen which is the main screen for the application.
+ */
 function Search() {
   const [searchParameters, setSearchParameters] = useState<DogSearchParameters>(DEFAULT_SEARCH_PARAMETERS)
   const page = Math.floor((searchParameters.from / searchParameters.size) + 1)

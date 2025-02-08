@@ -19,6 +19,16 @@ export type FetchContextType = {
 
 export const FetchContext = React.createContext<FetchContextType | null>(null)
 
+/**
+ * React Provider requiring the user to login before accessing the rest of the application.
+ * 
+ * Stores important information including the user's information and which dogs the user has favorited.
+ * 
+ * Will automatically refresh the user's login token after 3000 seconds to ensure they do not get logged out. 
+ * 
+ * @returns A React Provider that will force the user to login before accessing the rest of the application.
+ * Additionally, this stores information such as the dogs the user has favorited.
+ */
 export const FetchProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [loginInfo, setLoginInfo] = useState<LoginInfo | null>(null)
 

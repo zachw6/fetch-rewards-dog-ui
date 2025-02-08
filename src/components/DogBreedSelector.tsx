@@ -16,6 +16,13 @@ interface DogBreedSelectorProps {
   onSelect: (breed: string[]) => void
 }
 
+/**
+ * Input for selecting dog breeds. This list is dynamically generated based on the
+ * response from Fetch's /dogs/breeds endpoint.
+ * 
+ * @param props Object which contains the currently selected breeds and a function for updating them.
+ * @returns A multi-select input for selecting dog breeds
+ */
 function DogBreedSelector(props: DogBreedSelectorProps) {
   const queryDogBreeds = useQuery({
     queryKey: [QUERY_KEY.DOG_BREEDS],

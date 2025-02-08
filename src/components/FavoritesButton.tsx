@@ -4,6 +4,11 @@ import { Button, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/mat
 import DogList from './DogList'
 import { ArrowBack } from '@mui/icons-material'
 
+/**
+ * A button which when clicked displays a list of dogs that the user has favorited.
+ * 
+ * @returns A React Component that has a button and a dialog which pops up when the button is clicked showing the user all their favorited dogs.
+ */
 function FavoritesButton() {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
   const { favorites } = useFavorites()

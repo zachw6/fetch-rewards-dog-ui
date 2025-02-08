@@ -4,7 +4,6 @@ import { EMPTY_STRING } from './const'
 import { z } from 'zod'
 import DogWalking from './img/dog-walking.svg'
 
-
 interface LoginProps {
   onSubmit: (name: string, email: string) => void
 }

@@ -12,6 +12,13 @@ interface SearchParametersProps {
   onChange: (params: DogSearchParameters) => void
 }
 
+/**
+ * React component that enables the display and ability to update search parameters
+ * for the dog search.
+ * 
+ * @param props the parameters and the function to update the parameters
+ * @returns React component for displaying and updating search parameters
+ */
 function SearchParameters(props: SearchParametersProps) {
   
   return (
@@ -32,7 +39,6 @@ function SearchParameters(props: SearchParametersProps) {
               value={props.parameters.zipCodes}
               onChange={(_, value) => {
                 const zipCodes = value.filter(isNumber).filter(zipCode => String(zipCode).length === 5)
-                // TODO: If what they tried to enter was not a zip code (value and zipCodes are different lengths) send a toast message notifying them.
                 props.onChange({
                   ...props.parameters,
                   zipCodes
