@@ -1,0 +1,10 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.search-screen {
+  background-color: rgb(251,168,25);
+  color: rgb(48,13,56);
+  padding: 1rem;
+}
