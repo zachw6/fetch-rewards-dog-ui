@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box/Box'
 import { Grid2 as Grid, Pagination, Typography } from '@mui/material'
-import { MAX_DOG_AGE, QUERY_KEY } from '../const'
+import { DEFAULT_SEARCH_PARAMETERS, MAX_DOG_AGE, QUERY_KEY } from '../const'
 import { axiosFetchClient } from '../App'
 import { useQuery } from '@tanstack/react-query'
 import DogList from '../components/DogList'
@@ -9,8 +9,12 @@ import SearchParameters from '../components/SearchParameters'
 import FavoritesButton from '../components/FavoritesButton'
 import MatchButton from '../components/MatchButton'
 
-const DEFAULT_PAGE_SIZE = 25
 
+/**
+ * 
+ * @param searchParameters 
+ * @returns 
+ */
 async function searchDogs(searchParameters: DogSearchParameters) {
   const response = await axiosFetchClient.get<{
     next: string,
@@ -35,15 +39,7 @@ async function searchDogs(searchParameters: DogSearchParameters) {
 }
 
 function Search() {
-  const [searchParameters, setSearchParameters] = useState<DogSearchParameters>({
-    ageMin: 0,
-    ageMax: MAX_DOG_AGE,
-    breeds: [],
-    zipCodes: [],
-    from: 0,
-    size: DEFAULT_PAGE_SIZE,
-    sort: 'breed:asc'
-  })
+  const [searchParameters, setSearchParameters] = useState<DogSearchParameters>(DEFAULT_SEARCH_PARAMETERS)
   const page = Math.floor((searchParameters.from / searchParameters.size) + 1)
   
   const queryDogs = useQuery({

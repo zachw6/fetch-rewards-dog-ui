@@ -1,5 +1,5 @@
-import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Box, Grid2 as Grid, MenuItem, Slider, TextField, Typography } from '@mui/material'
-import { MAX_DOG_AGE, SORTABLE_VALUES, SORT_DELIMITER, SORT_DIRECTIONS, SORT_DIRECTION_INDEX, SORT_FIELD_INDEX } from '../const'
+import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Box, Button, Grid2 as Grid, MenuItem, Slider, TextField, Typography } from '@mui/material'
+import { DEFAULT_SEARCH_PARAMETERS, MAX_DOG_AGE, SORTABLE_VALUES, SORT_DELIMITER, SORT_DIRECTIONS, SORT_DIRECTION_INDEX, SORT_FIELD_INDEX } from '../const'
 import { isNumber } from '../util'
 import DogBreedSelector from './DogBreedSelector'
 import { ArrowDownward, FilterAlt } from '@mui/icons-material'
@@ -81,6 +81,25 @@ function SearchParameters(props: SearchParametersProps) {
               <MenuItem value="desc">Descending</MenuItem>
             </TextField>
           </Grid>
+          <Grid size={{ xs: 12, md: 6, lg: 4 }}>
+            <TextField
+              select
+              fullWidth
+              size="small"
+              label="Dogs Per Page"
+              value={props.parameters.size}
+              onChange={(e) => {
+                const value = parseInt(e.target.value)
+                if (!isNumber(value)) return
+                props.onChange({...props.parameters, size: value})
+              }}
+            >
+              <MenuItem value="10">10</MenuItem>
+              <MenuItem value="25">25</MenuItem>
+              <MenuItem value="50">50</MenuItem>
+              <MenuItem value="100">100</MenuItem>
+            </TextField>
+          </Grid>
           <Grid size={{ xs: 12, lg: 4 }} sx={{ textAlign: 'center' }}>
             <Typography>Age Range</Typography>
             <Slider
@@ -98,6 +117,9 @@ function SearchParameters(props: SearchParametersProps) {
               max={MAX_DOG_AGE}
               valueLabelDisplay='auto'
             />
+          </Grid>
+          <Grid size={12}>
+            <Button onClick={() => props.onChange(DEFAULT_SEARCH_PARAMETERS)}>Reset Search Filters</Button>
           </Grid>
         </Grid>
       </AccordionDetails>

@@ -1,10 +1,11 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(251,168,25);
 }
 
 .search-screen {
   color: rgb(48,13,56);
   padding: 1rem;
+  background-color: rgb(251,168,25);
+  min-height: 100dvh;
 }

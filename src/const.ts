@@ -12,3 +12,13 @@ export const SORT_FIELD_INDEX = 0
 export const SORT_DIRECTION_INDEX = 1
 export const SORTABLE_VALUES = ['breed', 'name', 'age']
 export const SORT_DIRECTIONS = ['asc', 'desc']
+export const DEFAULT_PAGE_SIZE = 25
+export const DEFAULT_SEARCH_PARAMETERS: DogSearchParameters = {
+  ageMin: 0,
+  ageMax: MAX_DOG_AGE,
+  breeds: [],
+  zipCodes: [],
+  from: 0,
+  size: DEFAULT_PAGE_SIZE,
+  sort: 'breed:asc'
+}

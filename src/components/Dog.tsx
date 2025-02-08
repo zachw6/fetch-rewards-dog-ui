@@ -1,5 +1,5 @@
 import { Favorite } from '@mui/icons-material'
-import { Card, CardActions, CardHeader, CardMedia, Grid2 as Grid, IconButton } from '@mui/material'
+import { Card, CardActions, CardContent, CardHeader, CardMedia, Grid2 as Grid, IconButton, Typography } from '@mui/material'
 import { useFavorites } from '../hooks/useFavorites'
 
 interface DogProps {
@@ -21,7 +21,10 @@ function Dog({ dog }: DogProps) {
           title="Dog Picture"
           sx={{height: '20rem'}}
         />
-        <CardHeader title={dog.name} subheader={`${dog.breed} - ${dog.zip_code}`} />
+        <CardHeader title={dog.name} subheader={`${dog.breed} - ${dog.age} Years Old`} />
+        <CardContent>
+          <Typography>Zip Code: {dog.zip_code}</Typography>
+        </CardContent>
         <CardActions>
           <IconButton onClick={() => { toggleMatch(dog.id) }}><Favorite color={matches.includes(dog.id) ? MATCHED_COLOR : UNMATCHED_COLOR} /></IconButton>
         </CardActions>
