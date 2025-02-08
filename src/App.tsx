@@ -20,7 +20,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <FetchProvider>
-        <Router>
+        <Router basename='fetch-rewards-dog-ui'>
           <Routes>
             <Route path="/" Component={Search} />
           </Routes>
